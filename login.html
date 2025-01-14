@@ -1,100 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="icon" href="DALL·E 2024-08-28 12.19.31 - A clean and moderately detailed logo for a Sanskrit education website. T.webp" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="icon"
+      href="DALL·E 2024-08-28 12.19.31 - A clean and moderately detailed logo for a Sanskrit education website. T.webp"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login and Signup Form</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="scontentcss.css">
-    <link rel="stylesheet" href="footercss.css">
-    <link rel="stylesheet" href="counting.css">
-    <!-- Font Awesome CDN link --> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="scontentcss.css" />
+    <link rel="stylesheet" href="footercss.css" />
+    <link rel="stylesheet" href="counting.css" />
+    <!-- Font Awesome CDN link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="cursor"></div>
     <header>
-        <nav>
-            <a href="#hero" class="logo">मातृबोधः</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#wisdom">About</a></li>
-                <li class="dropdown">
-                    <a href="#">Content</a>
-                    <ul class="dropdown-content">
-                        <li><a href="countingpage.html">Counting</a></li>
-                        <li><a href="#">Days</a></li>
-                        <li><a href="#">Activities</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                    </ul>
-                </li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="#">Contact</a></li>
+      <nav>
+        <a href="#hero" class="logo">मातृबोधः</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#wisdom">About</a></li>
+          <li class="dropdown">
+            <a href="#">Content</a>
+            <ul class="dropdown-content">
+              <li><a href="countingpage.html">Counting</a></li>
+              <li><a href="#">Days</a></li>
+              <li><a href="#">Activities</a></li>
+              <li><a href="feedback.html">Feedback</a></li>
             </ul>
-            <div class="toggle-menu">&#9776;</div>
-        </nav>
+          </li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="toggle-menu">&#9776;</div>
+      </nav>
     </header>
 
     <div class="wrapper">
-        <h1>Login</h1>
-        <form id="loginForm" onsubmit="return handleLogin(event)">
-            <input type="text" placeholder="Email" id="email" required>
-            <input type="password" placeholder="Password" id="password" required>
-            <div class="recover">
-                <a href="#">Forgot Password</a>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <div class="member">
-            Not a member? <a href="./signup.html">Register Now</a>
+      <h1>Login</h1>
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <input type="text" placeholder="Email" id="email" required />
+        <input type="password" placeholder="Password" id="password" required />
+        <div class="recover">
+          <a href="#">Forgot Password</a>
         </div>
+        <button type="submit">Login</button>
+      </form>
+      <div class="member">
+        Not a member? <a href="./signup.html">Register Now</a>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        async function handleLogin(event) {
-            event.preventDefault(); // Prevent form submission
+      async function handleLogin(event) {
+        event.preventDefault(); // Prevent form submission
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-            try {
-                const response = await axios.post('http://localhost:3000/api/v1/auth/login', {
-                    email: email,
-                    password: password
-                });
-
-                if (response.data.success) {
-                    alert('Login successful!');
-                    // Redirect to dashboard or another page
-                    console.log(response.data)
-                    // window.location.href = './index.html';
-                } else {
-                    alert('Login failed: ' + response.data.message);
-                }
-            } catch (error) {
-                if (error.response) {
-                    // Server responded with a status other than 2xx
-                    alert('Error: ' + error.response.data.message);
-                } else if (error.request) {
-                    // No response received
-                    alert('No response from server. Please try again later.');
-                } else {
-                    // Something else happened
-                    alert('An error occurred: ' + error.message);
-                }
+        try {
+          const response = await axios.post(
+            "http://localhost:3000/api/v1/auth/login",
+            {
+              email: email,
+              password: password,
             }
+          );
+
+          if (response.data.success) {
+            alert("Login successful!");
+            // Redirect to dashboard or another page
+            console.log(response.data);
+            // window.location.href = './index.html';
+          } else {
+            alert("Login failed: " + response.data.message);
+          }
+        } catch (error) {
+          if (error.response) {
+            // Server responded with a status other than 2xx
+            alert("Error: " + error.response.data.message);
+          } else if (error.request) {
+            // No response received
+            alert("No response from server. Please try again later.");
+          } else {
+            // Something else happened
+            alert("An error occurred: " + error.message);
+          }
         }
+      }
     </script>
 
     <div class="footer">
-        Made with ❤️ by <a href="https://github.com/Anjaliavv51/Matrubodhah" target="_blank">@Sakthi</a>
+      Made with ❤️ by
+      <a href="https://github.com/Anjaliavv51/Matrubodhah" target="_blank"
+        >@Sakthi</a
+      >
     </div>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="index.js"></script>
     <script src="scrollscript.js"></script>
     <script src="audio.js"></script>
-    <script src="index.js"></script>
-</body>
+  </body>
 </html>
