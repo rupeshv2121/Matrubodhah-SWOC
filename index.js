@@ -27,3 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+const cursor = document.querySelectorAll("#cursor");
+const body = document.querySelector("body");
+body.addEventListener("mousemove", (e) => {
+  gsap.to(cursor, {
+    x: e.x,
+    y: e.y
+  })
+})
