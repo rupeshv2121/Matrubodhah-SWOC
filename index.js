@@ -4,7 +4,7 @@ const tl = gsap.timeline();
 tl.from(logo, {
   opacity: 0,
   y: -30,
-  duration: 0.5
+  duration: 1
 })
 
 tl.from(navLinks, {
