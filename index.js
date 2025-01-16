@@ -1,3 +1,20 @@
+const logo = document.querySelector("nav .logo");
+const navLinks = document.querySelectorAll("ul li ")
+const tl = gsap.timeline();
+tl.from(logo, {
+  opacity: 0,
+  y: -30,
+  duration: 0.5
+})
+
+tl.from(navLinks, {
+  y: -30,
+  opacity: 0,
+  duration: 0.75,
+  stagger: 0.25,
+})
+
+
 // Add this to your existing JavaScript file
 document.addEventListener("DOMContentLoaded", function () {
   const toggleMenu = document.querySelector(".toggle-menu");
@@ -36,3 +53,6 @@ body.addEventListener("mousemove", (e) => {
     y: e.y
   })
 })
+
+
+
